@@ -34,7 +34,7 @@ Finally, each layer has separate *unit tests* accompanying their Swift-Package a
 
 The filter options can be seen in the following gif
 
-![filterSettings](media/filtersettings.gif)
+![filterSettings](media/filterSettings.gif)
 
 # Credits
 
