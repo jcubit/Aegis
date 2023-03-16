@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "herodataaccess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jcubit/HeroDataAccess",
+      "state" : {
+        "branch" : "main",
+        "revision" : "7549e0bf4c4f5b122b3f5d1177bb217a68155317"
+      }
+    },
+    {
+      "identity" : "herodomain",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jcubit/HeroDomain.git",
+      "state" : {
+        "revision" : "d42b0f0f7650433e71ce68d9f71cfc1a167353c0",
+        "version" : "0.1.1"
+      }
+    }
+  ],
+  "version" : 2
+}
