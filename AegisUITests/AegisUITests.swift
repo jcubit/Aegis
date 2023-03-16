@@ -7,27 +7,59 @@
 
 import XCTest
 
-final class AegisUITests: XCTestCase {
+final class D2HeroesUITests: XCTestCase {
 
-    override func setUpWithError() throws {
+    override func setUp()  {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-
+        super.setUp()
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        // In UI tests it’s important to set the initial state
+        let app = XCUIApplication()
+        app.launchArguments = ["-runTest 1"]
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
+    func test_heroes_exist() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        XCTAssertTrue(app.isDisplayingHeroes)
+    }
+
+    func test_hero_profile_image_exits_in_detail_view() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        let heroButtons = app.buttons["HeroView"]
+        XCTAssertTrue(heroButtons.waitForExistence(timeout: TimeInterval(2)))
+        heroButtons.firstMatch.tap()
+        XCTAssertTrue(app.isDisplayingHeroProfileImage)
+    }
+
+    func test_hero_settings_exist() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        let settingsButton = app.buttons["SettingsButton"]
+        XCTAssertTrue(settingsButton.waitForExistence(timeout: TimeInterval(2)))
+        settingsButton.tap()
+
+        let pickerButton = app.buttons["PrimaryAttributeButton"]
+        XCTAssertTrue(pickerButton.waitForExistence(timeout: TimeInterval(2)))
+    }
+
+    func test_settings_attribute_filter_picker_exists() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        let settingsButton = app.buttons["SettingsButton"]
+        XCTAssertTrue(settingsButton.waitForExistence(timeout: TimeInterval(2)))
+        settingsButton.tap()
+
+        let pickerButton = app.buttons["PrimaryAttributeButton"]
+        XCTAssertTrue(pickerButton.waitForExistence(timeout: TimeInterval(2)))
     }
 
     func testLaunchPerformance() throws {
@@ -39,3 +71,4 @@ final class AegisUITests: XCTestCase {
         }
     }
 }
+
